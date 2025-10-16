@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Dashboard</h1>
+    <p id="welcome"></p>
+    <button onclick="checkIn()">Check In</button>
+    <button onclick="checkOut()">Check Out</button>
+    <button onclick="logout()">Logout</button>
+
+    <h2>My Logs</h2>
+    <ul id="logList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    showEmployeeDashboard();
+  </script>
+</body>
+</html>
