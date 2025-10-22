@@ -3,17 +3,366 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Absence App</title>
+  <title>Rofizaidan Maulana - IT Professional Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="login-container">
-    <h2>Absence App Login</h2>
-    <input id="username" type="text" placeholder="Username" />
-    <input id="password" type="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <p id="error" style="color: red;"></p>
-  </div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Rofi Zaidan</div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">Hi, I'm <span class="highlight">Rofizaidan Maulana</span></h1>
+        <h2 class="hero-subtitle">IT Professional | Data Entry Administrator | AI Enthusiast</h2>
+        <p class="hero-description">
+          Passionate IT graduate with expertise in Data Entry, IT Support, and Artificial Intelligence. 
+          Ready to bring efficiency and technical excellence to your organization.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+          <a href="#experience" class="btn btn-secondary">View My Work</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Professional Summary</h3>
+          <p>
+            A passionate Information Technology (IT) graduate with a strong foundation in Data Entry, IT Support, and
+            Artificial Intelligence. Proven ability to manage and verify critical company data with high accuracy.
+          </p>
+          <p>
+            Possesses hands-on experience in system troubleshooting, customer service, and AI model training from the
+            "Kampus Merdeka" Independent Study program. A quick learner who adapts to new technologies and thrives
+            in collaborative team environments.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">99%</div>
+              <div class="stat-label">Data Accuracy</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">30%</div>
+              <div class="stat-label">Faster Resolution</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-info">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Bekasi, West Java, Indonesia</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-birthday-cake"></i>
+            <span>October 2000</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>rofizaidan05@gmail.com</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <span>+62 851-5909-1154</span>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-linkedin"></i>
+            <a href="https://linkedin.com/in/rofizaidanmaulana" target="_blank">linkedin.com/in/rofizaidanmaulana</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <!-- Experience 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">March 2022 – December 2024</div>
+            <h3>Data Entry Administrator / IT Support</h3>
+            <h4>PT. Hasta Mandiri Sepakat, West Java</h4>
+            <ul>
+              <li>Entered and verified <strong>100+ sales, purchasing, and tax data entries daily</strong> into the company's system, maintaining a data accuracy rate of <strong>over 99%</strong>.</li>
+              <li>Ensured data confidentiality and security in compliance with company procedures and policies.</li>
+              <li>Provided technical support (IT Support) for employees, resolving issues related to hardware (printers, mice, PCs), software (MS Excel, internal applications), and operating systems (Windows).</li>
+              <li>Successfully <strong>reduced resolution time for common technical issues by 30%</strong> by creating a simplified troubleshooting guide.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">August 2021 – January 2022</div>
+            <h3>Independent Study - Artificial Intelligence</h3>
+            <h4>Kampus Merdeka (Ministry of Education) & Orbit Future Academy</h4>
+            <ul>
+              <li>Trained Machine Learning models using structured datasets, including data preprocessing to enhance model accuracy.</li>
+              <li>Completed a <strong>5-month intensive learning program</strong> covering machine learning, deep learning, and AI fundamentals.</li>
+              <li>Collaborated in a team to develop a final project based on Artificial Intelligence.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">January 2015 – June 2018</div>
+            <h3>Internet Café Operator / IT Support</h3>
+            <h4>Bekasi, West Java</h4>
+            <ul>
+              <li>Managed the installation, maintenance, and repair of <strong>over 20 computer units</strong> and network devices.</li>
+              <li>Provided direct technical assistance and troubleshooting to customers to ensure a seamless user experience.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-container">
+        <!-- Technical Skills -->
+        <div class="skills-category">
+          <h3><i class="fas fa-code"></i> Technical Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fas fa-tools"></i></div>
+              <h4>IT Support</h4>
+              <ul>
+                <li>Hardware & Software Troubleshooting</li>
+                <li>OS Installation (Windows)</li>
+                <li>Basic Networking</li>
+                <li>Cybersecurity Fundamentals</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fas fa-keyboard"></i></div>
+              <h4>Data Entry</h4>
+              <ul>
+                <li>Microsoft Excel (Advanced)</li>
+                <li>Data Verification</li>
+                <li>Simple Database Management</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fas fa-brain"></i></div>
+              <h4>Artificial Intelligence</h4>
+              <ul>
+                <li>Model Training</li>
+                <li>Data Preprocessing</li>
+                <li>Machine Learning (Fundamental)</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+              <h4>Programming</h4>
+              <ul>
+                <li>JavaScript (Beginner - Intermediate)</li>
+                <li>Flutter (Beginner - Intermediate)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skills-category soft-skills">
+          <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
+          <div class="soft-skills-grid">
+            <div class="soft-skill-item">
+              <i class="fas fa-lightbulb"></i>
+              <span>Problem Solving</span>
+            </div>
+            <div class="soft-skill-item">
+              <i class="fas fa-chart-line"></i>
+              <span>Analytical Thinking</span>
+            </div>
+            <div class="soft-skill-item">
+              <i class="fas fa-users"></i>
+              <span>Teamwork and Collaboration</span>
+            </div>
+            <div class="soft-skill-item">
+              <i class="fas fa-book-reader"></i>
+              <span>Self-Learning & Initiative</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="education-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Bachelor of Science in Informatics</h3>
+          <h4>Singaperbangsa Karawang State University</h4>
+          <div class="education-info">
+            <span class="education-year">2018 – 2025</span>
+            <span class="education-gpa">GPA: 3.46</span>
+          </div>
+        </div>
+        <div class="education-card">
+          <div class="education-icon">
+            <i class="fas fa-school"></i>
+          </div>
+          <h3>High School Diploma</h3>
+          <h4>State High School 1 Cibitung</h4>
+          <div class="education-info">
+            <span class="education-year">2015 – 2018</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="certifications-grid">
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-robot"></i></div>
+          <h4>Artificial Intelligence</h4>
+          <p>Orbit Future Academy (Studi Independen)</p>
+          <span class="cert-year">2022</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-brain"></i></div>
+          <h4>Learn Basic AI</h4>
+          <p>Dicoding</p>
+          <span class="cert-year">2025</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>Cybersecurity Fundamentals</h4>
+          <p>IBM SkillBuild</p>
+          <span class="cert-year">2025</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-lock"></i></div>
+          <h4>FCF - Fortinet Network Security Expert</h4>
+          <p>Fortinet</p>
+          <span class="cert-year">2025</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Mobile Apps IoT</h4>
+          <p>Edutic - BNSP</p>
+          <span class="cert-year">2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-description">
+        I'm currently open to new opportunities. Whether you have a question or just want to say hi, 
+        feel free to reach out!
+      </p>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <h4>Email</h4>
+            <a href="mailto:rofizaidan05@gmail.com">rofizaidan05@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <i class="fas fa-phone"></i>
+            <h4>Phone</h4>
+            <a href="tel:+6285159091154">+62 851-5909-1154</a>
+          </div>
+          <div class="contact-card">
+            <i class="fab fa-linkedin"></i>
+            <h4>LinkedIn</h4>
+            <a href="https://linkedin.com/in/rofizaidanmaulana" target="_blank">rofizaidanmaulana</a>
+          </div>
+          <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h4>Location</h4>
+            <p>Bekasi, West Java, Indonesia</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Rofizaidan Maulana. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/rofizaidanmaulana" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:rofizaidan05@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+6285159091154"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
