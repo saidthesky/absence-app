@@ -1,19 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Absence App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Rofizaidan Maulana — IT Support, Data Entry, and AI enthusiast. Available for hiring." />
+  <meta name="keywords" content="Rofizaidan Maulana, IT Support, Data Entry, Artificial Intelligence, Bekasi, Indonesia, Resume" />
+  <meta property="og:title" content="Rofizaidan Maulana — Portfolio" />
+  <meta property="og:description" content="IT Support, Data Entry, and AI enthusiast. Available for hiring." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%231a73e8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='64' fill='white' font-family='Arial'%3ERofizaidan%3C/text%3E%3C/svg%3E" />
+  <link rel="canonical" href="/" />
+  <title>Rofizaidan Maulana — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rofizaidan Maulana",
+    "jobTitle": "IT Support / Data Entry",
+    "email": "mailto:rofizaidan05@gmail.com",
+    "telephone": "+6285159091154",
+    "url": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bekasi",
+      "addressRegion": "West Java",
+      "addressCountry": "ID"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/rofizaidanmaulana"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Absence App Login</h2>
-    <input id="username" type="text" placeholder="Username" />
-    <input id="password" type="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <p id="error" style="color: red;"></p>
-  </div>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#home" aria-label="Homepage">
+        <span class="logo" aria-hidden="true">RM</span>
+        <span class="brand-text">Rofizaidan Maulana</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul id="navMenu" class="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certificates</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme" onclick="toggleTheme()">
+        <span class="sun" aria-hidden="true">☀️</span>
+        <span class="moon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero container">
+      <div class="hero-text">
+        <h1>IT Support & Data Entry</h1>
+        <p class="subtitle">I keep systems running and data clean.</p>
+        <p class="meta">Bekasi, Indonesia • Oct 2000</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:rofizaidan05@gmail.com?subject=Hiring%20Rofizaidan%20Maulana&body=Hi%20Rofizaidan,%20we'd%20like%20to%20talk%20about%20an%20opportunity." rel="noopener">Email me</a>
+          <button class="btn" onclick="printResume()">Download Resume</button>
+        </div>
+        <div class="links">
+          <a href="tel:+6285159091154">+62 851-5909-1154</a>
+          <span>•</span>
+          <a href="mailto:rofizaidan05@gmail.com">rofizaidan05@gmail.com</a>
+          <span>•</span>
+          <a href="https://www.linkedin.com/in/rofizaidanmaulana" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section container">
+      <h2>About</h2>
+      <p>
+        A passionate Information Technology (IT) graduate with a strong foundation in Data Entry, IT Support,
+        and Artificial Intelligence. Proven ability to manage and verify critical company data with high accuracy.
+        Hands-on experience in system troubleshooting, customer service, and AI model training from the
+        "Kampus Merdeka" Independent Study program. A quick learner who adapts to new technologies and thrives
+        in collaborative team environments.
+      </p>
+    </section>
+
+    <section id="experience" class="section container">
+      <h2>Experience</h2>
+      <div class="cards">
+        <article class="card">
+          <header class="card-header">
+            <h3>Data Entry Administrator / IT Support</h3>
+            <span class="org">PT. Hasta Mandiri Sepakat — West Java</span>
+            <span class="time">Mar 2022 – Dec 2024</span>
+          </header>
+          <ul>
+            <li>Entered and verified 100+ daily records (sales, purchasing, tax) with >99% accuracy.</li>
+            <li>Maintained data confidentiality in line with company procedures and policies.</li>
+            <li>Provided IT support for hardware, software, and Windows OS issues.</li>
+            <li>Cut resolution time for common issues by 30% via a simple troubleshooting guide.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <header class="card-header">
+            <h3>Independent Study — Artificial Intelligence</h3>
+            <span class="org">Kampus Merdeka & Orbit Future Academy</span>
+            <span class="time">Aug 2021 – Jan 2022</span>
+          </header>
+          <ul>
+            <li>Trained machine learning models and performed data preprocessing to improve accuracy.</li>
+            <li>Completed 5-month intensive program in ML, DL, and AI fundamentals.</li>
+            <li>Collaborated with a team to build an AI-based final project.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <header class="card-header">
+            <h3>Internet Café Operator / IT Support</h3>
+            <span class="org">Bekasi, West Java</span>
+            <span class="time">Jan 2015 – Jun 2018</span>
+          </header>
+          <ul>
+            <li>Handled installation, maintenance, and repair of 20+ PCs and network devices.</li>
+            <li>Provided direct technical assistance ensuring smooth customer experiences.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section container">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>IT Support</h4>
+          <div class="tags">
+            <span>Hardware Troubleshooting</span>
+            <span>Software Troubleshooting</span>
+            <span>Windows Installation</span>
+            <span>Basic Networking</span>
+            <span>Cybersecurity Fundamentals</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Data Entry</h4>
+          <div class="tags">
+            <span>Microsoft Excel (Advanced)</span>
+            <span>Data Verification</span>
+            <span>Simple Database Management</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Artificial Intelligence</h4>
+          <div class="tags">
+            <span>Model Training</span>
+            <span>Data Preprocessing</span>
+            <span>Machine Learning (Fundamental)</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Programming</h4>
+          <div class="tags">
+            <span>JavaScript (Beg/Int)</span>
+            <span>Flutter (Beg/Int)</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Soft Skills</h4>
+          <div class="tags">
+            <span>Problem Solving</span>
+            <span>Analytical Thinking</span>
+            <span>Teamwork</span>
+            <span>Self-Learning</span>
+            <span>Initiative</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section container">
+      <h2>Education</h2>
+      <div class="cards">
+        <article class="card">
+          <header class="card-header">
+            <h3>Singaperbangsa Karawang State University</h3>
+            <span class="org">B.Sc. in Informatics</span>
+            <span class="time">2018 – 2025 • GPA: 3.46</span>
+          </header>
+        </article>
+        <article class="card">
+          <header class="card-header">
+            <h3>State High School 1 Cibitung</h3>
+            <span class="time">2015 – 2018</span>
+          </header>
+        </article>
+      </div>
+    </section>
+
+    <section id="certifications" class="section container">
+      <h2>Certificates</h2>
+      <ul class="cert-list">
+        <li>Artificial Intelligence — Orbit Future Academy (Studi Independen), 2022</li>
+        <li>Artificial Intelligence — Dicoding, Learn Basic AI, 2025</li>
+        <li>Cybersecurity — IBM SkillBuild, Cybersecurity Fundamentals, 2025</li>
+        <li>Cybersecurity — Fortinet, FCF - Fortinet Network Security Expert, 2025</li>
+        <li>IoT — Edutic - BNSP, Mobile Apps IoT, 2025</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="label">Email</div>
+          <a href="mailto:rofizaidan05@gmail.com">rofizaidan05@gmail.com</a>
+          <button class="link-btn" onclick="copyEmail()">Copy</button>
+        </div>
+        <div class="contact-card">
+          <div class="label">Phone</div>
+          <a href="tel:+6285159091154">+62 851-5909-1154</a>
+        </div>
+        <div class="contact-card">
+          <div class="label">LinkedIn</div>
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/rofizaidanmaulana">linkedin.com/in/rofizaidanmaulana</a>
+        </div>
+        <div class="contact-card">
+          <div class="label">Available for</div>
+          <div>Full-time IT Support, Data Entry, Junior AI roles</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Rofizaidan Maulana. All rights reserved.</small>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
