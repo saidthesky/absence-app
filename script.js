@@ -1,110 +1,81 @@
-// Default admin account
-const ADMIN = { username: "admin", password: "rofizaidan" };
+// Portfolio interactions: theme toggle, mobile nav, copy, print
 
-// Load employees or initialize
-let employees = JSON.parse(localStorage.getItem("employees")) || [];
+(function initPortfolio() {
+  // Init year
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Login function
-function login() {
-  const user = document.getElementById("username").value.trim();
-  const pass = document.getElementById("password").value.trim();
-  const error = document.getElementById("error");
+  // Init theme
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const initial = storedTheme || (prefersDark ? "dark" : "light");
+  root.setAttribute("data-theme", initial);
 
-  if (user === ADMIN.username && pass === ADMIN.password) {
-    localStorage.setItem("role", "admin");
-    window.location.href = "admin.html";
-    return;
+  // Listen for system changes if user hasn't explicitly chosen
+  if (!storedTheme && window.matchMedia) {
+    try {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        root.setAttribute("data-theme", e.matches ? "dark" : "light");
+      });
+    } catch (_) {
+      // older browsers
+      window.matchMedia("(prefers-color-scheme: dark)").addListener((e) => {
+        root.setAttribute("data-theme", e.matches ? "dark" : "light");
+      });
+    }
   }
 
-  const emp = employees.find(e => e.username === user && e.password === pass);
-  if (emp) {
-    localStorage.setItem("role", "employee");
-    localStorage.setItem("employee", JSON.stringify(emp));
-    window.location.href = "employee.html";
-  } else {
-    error.textContent = "Invalid username or password";
+  // Close mobile menu when clicking a link
+  const navMenu = document.getElementById("navMenu");
+  if (navMenu) {
+    navMenu.addEventListener("click", (ev) => {
+      const target = ev.target;
+      if (target && target.tagName === "A" && navMenu.classList.contains("open")) {
+        navMenu.classList.remove("open");
+        const toggleBtn = document.querySelector(".nav-toggle");
+        if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+      }
+    });
   }
-}
+})();
 
-// Logout
-function logout() {
-  localStorage.removeItem("role");
-  localStorage.removeItem("employee");
-  window.location.href = "index.html";
-}
+// Expose functions globally for inline handlers
+window.toggleTheme = function toggleTheme() {
+  const root = document.documentElement;
+  const current = root.getAttribute("data-theme") || "light";
+  const next = current === "light" ? "dark" : "light";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+};
 
-// Render employees list (for admin)
-function renderEmployees() {
-  const list = document.getElementById("employeeList");
-  list.innerHTML = "";
-  employees.forEach((e, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `${e.username} 
-      <button onclick="deleteEmployee(${i})">Delete</button>`;
-    list.appendChild(li);
-  });
-}
+window.toggleNav = function toggleNav() {
+  const navMenu = document.getElementById("navMenu");
+  const btn = document.querySelector(".nav-toggle");
+  if (!navMenu || !btn) return;
+  const open = navMenu.classList.toggle("open");
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
+};
 
-// Add employee
-function addEmployee() {
-  const newUser = document.getElementById("newUser").value.trim();
-  const newPass = document.getElementById("newPass").value.trim();
-  if (!newUser || !newPass) return alert("Fill all fields");
-
-  employees.push({ username: newUser, password: newPass, logs: [] });
-  localStorage.setItem("employees", JSON.stringify(employees));
-  renderEmployees();
-  alert("Employee added!");
-}
-
-// Delete employee
-function deleteEmployee(index) {
-  employees.splice(index, 1);
-  localStorage.setItem("employees", JSON.stringify(employees));
-  renderEmployees();
-}
-
-// Employee page
-function showEmployeeDashboard() {
-  const emp = JSON.parse(localStorage.getItem("employee"));
-  if (!emp) {
-    window.location.href = "index.html";
-    return;
+window.copyEmail = async function copyEmail() {
+  const email = "rofizaidan05@gmail.com";
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(email);
+    } else {
+      const ta = document.createElement("textarea");
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    alert("Email copied to clipboard");
+  } catch (err) {
+    alert("Failed to copy. Please copy manually.");
   }
+};
 
-  document.getElementById("welcome").textContent = `Hello, ${emp.username}`;
-  renderLogs();
-}
-
-function renderLogs() {
-  const emp = JSON.parse(localStorage.getItem("employee"));
-  const list = document.getElementById("logList");
-  list.innerHTML = "";
-  emp.logs.forEach(log => {
-    const li = document.createElement("li");
-    li.textContent = `${log.action} at ${log.time}`;
-    list.appendChild(li);
-  });
-}
-
-// Employee check in/out
-function checkIn() {
-  addLog("Check In");
-}
-function checkOut() {
-  addLog("Check Out");
-}
-
-function addLog(action) {
-  const emp = JSON.parse(localStorage.getItem("employee"));
-  const now = new Date().toLocaleString();
-  emp.logs.push({ action, time: now });
-  localStorage.setItem("employee", JSON.stringify(emp));
-
-  // update localStorage main list
-  employees = employees.map(e => 
-    e.username === emp.username ? emp : e
-  );
-  localStorage.setItem("employees", JSON.stringify(employees));
-  renderLogs();
-}
+window.printResume = function printResume() {
+  window.print();
+};
