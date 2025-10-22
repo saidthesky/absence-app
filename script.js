@@ -1,110 +1,197 @@
-// Default admin account
-const ADMIN = { username: "admin", password: "rofizaidan" };
+// Mobile Navigation Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
-// Load employees or initialize
-let employees = JSON.parse(localStorage.getItem("employees")) || [];
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
 
-// Login function
-function login() {
-  const user = document.getElementById("username").value.trim();
-  const pass = document.getElementById("password").value.trim();
-  const error = document.getElementById("error");
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+});
 
-  if (user === ADMIN.username && pass === ADMIN.password) {
-    localStorage.setItem("role", "admin");
-    window.location.href = "admin.html";
-    return;
-  }
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offsetTop = target.offsetTop - 70;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
 
-  const emp = employees.find(e => e.username === user && e.password === pass);
-  if (emp) {
-    localStorage.setItem("role", "employee");
-    localStorage.setItem("employee", JSON.stringify(emp));
-    window.location.href = "employee.html";
+// Navbar background on scroll
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 100) {
+    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
   } else {
-    error.textContent = "Invalid username or password";
+    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+  }
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+  section.style.opacity = '0';
+  section.style.transform = 'translateY(20px)';
+  section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(section);
+});
+
+// Observe timeline items
+document.querySelectorAll('.timeline-item').forEach(item => {
+  item.style.opacity = '0';
+  item.style.transform = 'translateX(-20px)';
+  item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(item);
+});
+
+// Contact Form Handling
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  
+  // Create mailto link
+  const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+  const mailtoLink = `mailto:rofizaidan05@gmail.com?subject=${subject}&body=${body}`;
+  
+  // Open email client
+  window.location.href = mailtoLink;
+  
+  // Optional: Show success message
+  alert('Thank you for your message! Your email client will open to send the message.');
+  
+  // Reset form
+  contactForm.reset();
+});
+
+// Add active class to current navigation item
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  
+  let current = '';
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (window.scrollY >= (sectionTop - 100)) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').slice(1) === current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Typing effect for hero subtitle
+const subtitle = document.querySelector('.hero-subtitle');
+const subtitleText = subtitle.textContent;
+subtitle.textContent = '';
+
+let i = 0;
+function typeWriter() {
+  if (i < subtitleText.length) {
+    subtitle.textContent += subtitleText.charAt(i);
+    i++;
+    setTimeout(typeWriter, 50);
   }
 }
 
-// Logout
-function logout() {
-  localStorage.removeItem("role");
-  localStorage.removeItem("employee");
-  window.location.href = "index.html";
+// Start typing effect when page loads
+window.addEventListener('load', () => {
+  setTimeout(typeWriter, 500);
+});
+
+// Stats counter animation
+function animateCounter(element, target, duration = 2000) {
+  const start = 0;
+  const increment = target / (duration / 16);
+  let current = start;
+  
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target + (element.dataset.suffix || '');
+      clearInterval(timer);
+    } else {
+      element.textContent = Math.floor(current) + (element.dataset.suffix || '');
+    }
+  }, 16);
 }
 
-// Render employees list (for admin)
-function renderEmployees() {
-  const list = document.getElementById("employeeList");
-  list.innerHTML = "";
-  employees.forEach((e, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `${e.username} 
-      <button onclick="deleteEmployee(${i})">Delete</button>`;
-    list.appendChild(li);
+// Observe stat numbers
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const statNumber = entry.target;
+      const text = statNumber.textContent;
+      const number = parseInt(text);
+      
+      if (!isNaN(number)) {
+        statNumber.dataset.suffix = text.replace(number, '');
+        animateCounter(statNumber, number);
+        statsObserver.unobserve(statNumber);
+      }
+    }
   });
-}
+}, { threshold: 0.5 });
 
-// Add employee
-function addEmployee() {
-  const newUser = document.getElementById("newUser").value.trim();
-  const newPass = document.getElementById("newPass").value.trim();
-  if (!newUser || !newPass) return alert("Fill all fields");
+document.querySelectorAll('.stat-number').forEach(stat => {
+  statsObserver.observe(stat);
+});
 
-  employees.push({ username: newUser, password: newPass, logs: [] });
-  localStorage.setItem("employees", JSON.stringify(employees));
-  renderEmployees();
-  alert("Employee added!");
-}
-
-// Delete employee
-function deleteEmployee(index) {
-  employees.splice(index, 1);
-  localStorage.setItem("employees", JSON.stringify(employees));
-  renderEmployees();
-}
-
-// Employee page
-function showEmployeeDashboard() {
-  const emp = JSON.parse(localStorage.getItem("employee"));
-  if (!emp) {
-    window.location.href = "index.html";
-    return;
+// Add parallax effect to hero section
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const hero = document.querySelector('.hero-content');
+  if (hero) {
+    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
   }
+});
 
-  document.getElementById("welcome").textContent = `Hello, ${emp.username}`;
-  renderLogs();
+// Print/Download CV functionality (optional)
+function downloadCV() {
+  window.print();
 }
 
-function renderLogs() {
-  const emp = JSON.parse(localStorage.getItem("employee"));
-  const list = document.getElementById("logList");
-  list.innerHTML = "";
-  emp.logs.forEach(log => {
-    const li = document.createElement("li");
-    li.textContent = `${log.action} at ${log.time}`;
-    list.appendChild(li);
-  });
-}
-
-// Employee check in/out
-function checkIn() {
-  addLog("Check In");
-}
-function checkOut() {
-  addLog("Check Out");
-}
-
-function addLog(action) {
-  const emp = JSON.parse(localStorage.getItem("employee"));
-  const now = new Date().toLocaleString();
-  emp.logs.push({ action, time: now });
-  localStorage.setItem("employee", JSON.stringify(emp));
-
-  // update localStorage main list
-  employees = employees.map(e => 
-    e.username === emp.username ? emp : e
-  );
-  localStorage.setItem("employees", JSON.stringify(employees));
-  renderLogs();
-}
+// Add console message
+console.log('%c👋 Hello, Recruiter!', 'color: #2563eb; font-size: 20px; font-weight: bold;');
+console.log('%cThanks for visiting my portfolio! Feel free to reach out.', 'color: #6b7280; font-size: 14px;');
+console.log('%c📧 rofizaidan05@gmail.com', 'color: #2563eb; font-size: 14px;');
